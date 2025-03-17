@@ -15,9 +15,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = "md" }) => {
     <div
       className={`spinner-border animate-spin inline-block border-4 rounded-full ${sizeClasses[size]}`}
       role="status"
-    >
-      <span className="visually-hidden">Loading...</span>
-    </div>
+    ></div>
   );
 };
 

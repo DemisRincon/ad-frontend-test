@@ -19,8 +19,14 @@ const useGenreSelector = (genreList: string[], selectedGenre: string) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newGenre = e.target.value;
     handleChangeGenre(newGenre);
-    const newUrl = `?genre=${newGenre.toLowerCase()}`;
-    window.history.pushState(null, "", newUrl);
+
+    let newUrl = new URL(window.location.href);
+    if (newGenre.toLowerCase() === "all") {
+      newUrl.searchParams.delete("genre");
+    } else {
+      newUrl.searchParams.set("genre", newGenre.toLowerCase());
+    }
+    window.history.pushState(null, "", newUrl.toString());
   };
 
   return { genre, handleChange };
