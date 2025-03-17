@@ -5,9 +5,10 @@ import { Game } from "@/utils/types";
 
 interface GamesGridProps {
   initialGameList: Game[];
+  hasMore: boolean;
 }
 
-const GamesGrid: React.FC<GamesGridProps> = ({ initialGameList }) => {
+const GamesGrid: React.FC<GamesGridProps> = ({ initialGameList, hasMore }) => {
   const [games, setGames] = useState<Game[]>(initialGameList);
   const [loading, setLoading] = useState(false);
   return (

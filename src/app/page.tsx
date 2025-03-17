@@ -1,48 +1,35 @@
 import GamesGrid from "@/components/games-grid";
 import GenreSelector from "@/components/genre-selector";
+import fetchGames from "@/services/fetchGames";
 import React from "react";
 
-const Home = () => {
+const Home = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
+  const selectedGenre =
+    typeof searchParams.genre === "string" ? searchParams.genre : "";
+  const page =
+    typeof searchParams.page === "string"
+      ? Number.parseInt(searchParams.page)
+      : 1;
+
+  const { availableFilters, games, totalPages, currentPage } = await fetchGames(
+    selectedGenre,
+    page
+  );
+  const hasMore = currentPage < totalPages;
   return (
     <>
       <section className="border-b border-fillPrimary">
-        <GenreSelector genreList={["All"]} selectedGenre={"All"} />
+        <GenreSelector
+          genreList={["All", ...availableFilters]}
+          selectedGenre={selectedGenre}
+        />
       </section>
       <section>
-        <GamesGrid
-          initialGameList={[
-            {
-              id: "1",
-              genre: "Action",
-              image: "/game-images/cyberpunk2077.jpeg",
-              name: "Cyberpunk 2077",
-              description:
-                "An open-world, action-adventure story set in Night City.",
-              price: 59.99,
-              isNew: true,
-            },
-            {
-              id: "2",
-              genre: "RPG",
-              image: "/game-images/thewitcher3.jpeg",
-              name: "The Witcher 3: Wild Hunt",
-              description:
-                "A story-driven, next-generation open world role-playing game.",
-              price: 39.99,
-              isNew: false,
-            },
-            {
-              id: "3",
-              genre: "Adventure",
-              image: "/game-images/zeldabotw.jpeg",
-              name: "The Legend of Zelda: Breath of the Wild",
-              description:
-                "An epic adventure that breaks boundaries in the Zelda series.",
-              price: 59.99,
-              isNew: true,
-            },
-          ]}
-        />
+        <GamesGrid initialGameList={games} hasMore={hasMore} />
       </section>
     </>
   );

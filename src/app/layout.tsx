@@ -3,6 +3,7 @@ import { Archivo } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import InnerLayout from "@/components/innerLayout";
+import GameContexProvider from "@/utils/context/provider";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -28,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${archivo.variable} ${area.variable}`}>
-        <InnerLayout>{children}</InnerLayout>
+        <GameContexProvider>
+          <InnerLayout>{children}</InnerLayout>
+        </GameContexProvider>
       </body>
     </html>
   );
