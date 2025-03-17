@@ -14,7 +14,7 @@ const GamesGrid: React.FC<GamesGridProps> = ({ initialGameList, hasMore }) => {
   return (
     <div className="flex w-full py-9 px-6 2xl:py-12 2xl:px-32">
       <div className="w-full h-full flex flex-col items-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 2xl:gap-16 w-full place-content-center">
           {games.map((game: Game) => (
             <GameCard key={game.id} game={game} />
           ))}
