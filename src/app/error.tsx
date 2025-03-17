@@ -13,7 +13,7 @@ const Error: React.FC<ErrorPageProps> = ({ error }) => {
     <div className="font-archivo flex flex-col items-center justify-center py-16 px-4 text-center">
       <h1 className="text-4xl font-bold mb-4">Something went wrong!</h1>
       <p className="text-contentSecondary mb-4 max-w-md">
-        We're sorry, but we encountered an unexpected error.
+        We&apos;re sorry, but we encountered an unexpected error.
       </p>
 
       {error.digest && (

@@ -1,7 +1,14 @@
-export default async function Home() {
+import GenreSelector from "@/components/genre-selector";
+import React from "react";
+
+const Home = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 font-bold text-4xl text-blue-600">
-      Hello, world!
-    </main>
+    <>
+      <section className="border-b border-fillPrimary">
+        <GenreSelector genreList={["All"]} selectedGenre={"All"} />
+      </section>
+    </>
   );
-}
+};
+
+export default Home;
