@@ -196,6 +196,11 @@
     </p>
     <br>
 
+## EXTRA
+
+- Added GitHub Action for automatic testing. You can see it in action [here](https://github.com/DemisRincon/ad-frontend-test/actions).
+- While loading, other buttons are locked. This was achieved using the Context API from React.
+
 ## DELIVERABLES
 
 - A GitHub repo
