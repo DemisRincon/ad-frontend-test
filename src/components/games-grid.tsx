@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
+import type React from "react";
 import GameCard from "./game-card";
-import { Game } from "@/utils/types";
+import type { Game } from "@/utils/types";
 import LoadingSpinner from "./loading-spinner";
 import useGamesGrid from "@/utils/hooks/useGamesGrid";
 
@@ -11,10 +11,14 @@ interface GamesGridProps {
 }
 
 const GamesGrid: React.FC<GamesGridProps> = ({ initialGameList, hasMore }) => {
-  const { games, hasMoreGames, isLoading } = useGamesGrid(
-    initialGameList,
-    hasMore
-  );
+  const {
+    games,
+    hasMoreGames,
+    isLoading,
+    isLoadingMore,
+    loadMoreGames,
+    currentPage,
+  } = useGamesGrid(initialGameList, hasMore);
 
   if (isLoading) {
     return <LoadingSpinner size="lg" />;
@@ -39,8 +43,10 @@ const GamesGrid: React.FC<GamesGridProps> = ({ initialGameList, hasMore }) => {
             <button
               className="bg-contentPrimary rounded-lg font-archivo text-base h-[48px] w-[327px] text-white px-6 py-2 uppercase font-medium hover:bg-contentSecondary transition-colors"
               aria-label="Load more games"
+              onClick={loadMoreGames}
+              disabled={isLoadingMore}
             >
-              {"See More"}
+              {isLoadingMore ? "Loading..." : "See More"}
             </button>
           </div>
         )}

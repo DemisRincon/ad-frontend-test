@@ -12,8 +12,6 @@ const useGenreSelector = (genreList: string[]) => {
     const newGenre = genreList.find(
       (item) => item.toLowerCase() === searchParamGenre.toLowerCase()
     );
-    console.log(newGenre);
-    console.log(genre);
     setGenre(newGenre || "All");
   }, [searchParams, genreList, genre]);
 
