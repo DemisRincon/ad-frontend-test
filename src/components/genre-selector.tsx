@@ -4,17 +4,10 @@ import { type FC } from "react";
 
 interface GenreSelectorProps {
   genreList: string[];
-  selectedGenre: string;
 }
 
-const GenreSelector: FC<GenreSelectorProps> = ({
-  genreList,
-  selectedGenre,
-}) => {
-  const { genre, handleChange, isLoading } = useGenreSelector(
-    genreList,
-    selectedGenre
-  );
+const GenreSelector: FC<GenreSelectorProps> = ({ genreList }) => {
+  const { genre, handleChange, isLoading } = useGenreSelector(genreList);
 
   return (
     <div className="flex flex-col w-full py-8 px-6 2xl:py-12 2xl:px-32">

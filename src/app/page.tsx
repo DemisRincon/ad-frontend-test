@@ -23,10 +23,7 @@ const Home = async ({
   return (
     <>
       <section className="border-b border-fillPrimary">
-        <GenreSelector
-          genreList={["All", ...availableFilters]}
-          selectedGenre={selectedGenre}
-        />
+        <GenreSelector genreList={["All", ...availableFilters]} />
       </section>
       <section>
         <GamesGrid initialGameList={games} hasMore={hasMore} />
