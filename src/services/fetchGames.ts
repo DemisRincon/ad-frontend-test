@@ -1,5 +1,7 @@
 const fetchGames = async (genre: string | null = null, page: number = 1) => {
   try {
+    console.log("fetchGames", process.env.NODE_ENV);
+    console.log("fetchGames", process.env.VERCEL_URL);
     const url = new URL(
       "/api/games",
       process.env.NODE_ENV === "development"
