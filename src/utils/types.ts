@@ -7,3 +7,7 @@ export interface Game {
   price: number;
   isNew: boolean;
 }
+
+export interface CartItemInterface extends Game {
+  quantity: number;
+}
