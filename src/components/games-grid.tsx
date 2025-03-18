@@ -11,14 +11,8 @@ interface GamesGridProps {
 }
 
 const GamesGrid: React.FC<GamesGridProps> = ({ initialGameList, hasMore }) => {
-  const {
-    games,
-    hasMoreGames,
-    isLoading,
-    isLoadingMore,
-    loadMoreGames,
-    currentPage,
-  } = useGamesGrid(initialGameList, hasMore);
+  const { games, hasMoreGames, isLoading, isLoadingMore, loadMoreGames } =
+    useGamesGrid(initialGameList, hasMore);
 
   if (isLoading) {
     return <LoadingSpinner size="lg" />;
@@ -43,6 +37,7 @@ const GamesGrid: React.FC<GamesGridProps> = ({ initialGameList, hasMore }) => {
             <button
               className="bg-contentPrimary rounded-lg font-archivo text-base h-[48px] w-[327px] text-white px-6 py-2 uppercase font-medium hover:bg-contentSecondary transition-colors"
               aria-label="Load more games"
+              role="button"
               onClick={loadMoreGames}
               disabled={isLoadingMore}
             >
