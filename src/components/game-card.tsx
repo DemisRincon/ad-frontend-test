@@ -1,6 +1,7 @@
 import { Game } from "@/utils/types";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Image from "next/image";
+import { addToCart, isItemInCart, removeFromCart } from "@/services/cart";
 
 interface GameCardProps {
   game: Game;
@@ -8,11 +9,25 @@ interface GameCardProps {
 
 const GameCard: FC<GameCardProps> = ({ game }) => {
   const { id, name, image, isNew, genre, price } = game;
+  const [isInCart, setIsInCart] = useState(isItemInCart(id));
+
+  const toggleCart = () => {
+    if (!isInCart) {
+      addToCart(game);
+      setIsInCart(true);
+    } else {
+      removeFromCart(id);
+      setIsInCart(false);
+    }
+  };
 
   return (
-    <article className="w-full h-full flex justify-center 2xl:block">
+    <article
+      className="w-full h-full flex justify-center 2xl:block"
+      aria-labelledby={`game-title-${id}`}
+    >
       <div
-        className="bg-white container border border-fillTertiary rounded-2xl w-[327px] 2xl:w-[380px] h-[436px] p-6  "
+        className="bg-white container border border-fillTertiary rounded-2xl w-[327px] 2xl:w-[380px] h-[436px] p-6"
         aria-labelledby={`game-title-${id}`}
         title={name}
       >
@@ -55,11 +70,20 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
             </div>
           </div>
           <button
-            className="w-full h-14 text-center border rounded-lg border-contentSecondary hover:bg-gray-50 transition-colors text-base font-archivo tracking-[0.5px]"
-            aria-label={`Add ${name} to cart`}
-            title={`Add ${name} to cart`}
+            onClick={toggleCart}
+            className={`w-full h-14 text-center border rounded-lg transition-colors text-base font-archivo tracking-[0.5px] ${
+              isInCart
+                ? "bg-contentSecondary text-white border-contentSecondary hover:bg-opacity-90"
+                : "border-contentSecondary hover:bg-gray-50"
+            }`}
+            aria-label={
+              isInCart ? `Remove ${name} from cart` : `Add ${name} to cart`
+            }
+            title={
+              isInCart ? `Remove ${name} from cart` : `Add ${name} to cart`
+            }
           >
-            ADD TO CART
+            {isInCart ? "REMOVE" : "ADD TO CART"}
           </button>
         </div>
       </div>

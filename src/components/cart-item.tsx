@@ -20,7 +20,6 @@ export function CartItem({
   genre,
   onRemove,
 }: CartItemProps) {
-  console.log("CartItem rendered", image);
   return (
     <div className="relative border-b py-5 h-[332px] sm:h-auto sm:w-full sm:pb-0 w-full 2xl:max-w-[678px] sm:min-h-[196px]">
       <div className="flex flex-col sm:flex-row items-start justify-between h-full ">
