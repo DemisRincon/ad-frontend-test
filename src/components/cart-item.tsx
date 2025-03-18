@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import NewBadge from "./ui/new-badge";
 
 interface CartItemProps {
   id: string;
@@ -8,6 +9,7 @@ interface CartItemProps {
   price: number;
   image: string;
   genre: string;
+  isNew: boolean;
   onRemove: (id: string) => void;
 }
 
@@ -18,6 +20,7 @@ export function CartItem({
   price,
   image,
   genre,
+  isNew,
   onRemove,
 }: CartItemProps) {
   return (
@@ -31,6 +34,7 @@ export function CartItem({
             height={136}
             className="h-full w-full object-cover"
           />
+          {isNew && <NewBadge />}
         </div>
         <div className="flex flex-1 flex-col px-4 w-full font-archivo">
           <div className="flex flex-1 flex-col">

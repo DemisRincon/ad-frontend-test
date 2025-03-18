@@ -2,6 +2,7 @@ import { Game } from "@/utils/types";
 import React, { FC, useState } from "react";
 import Image from "next/image";
 import { addToCart, isItemInCart, removeFromCart } from "@/services/cart";
+import NewBadge from "./ui/new-badge";
 
 interface GameCardProps {
   game: Game;
@@ -45,15 +46,7 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
               className="object-cover"
             />
           )}
-          {isNew && (
-            <div
-              className="absolute top-2 left-2 bg-fillQuinary text-contentSecondary text-base px-2 py-1 rounded font-archivo"
-              aria-label="New"
-              title="New"
-            >
-              New
-            </div>
-          )}
+          {isNew && <NewBadge />}
         </div>
         <div className="flex flex-col justify-between mt-5 h-[128px] font-archivo font-bold">
           <div>

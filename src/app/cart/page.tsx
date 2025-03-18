@@ -52,6 +52,7 @@ const CartPage = () => {
                 price={item.price}
                 image={item.image}
                 genre={item.genre}
+                isNew={item.isNew}
                 onRemove={handleRemoveItem}
               />
             ))
