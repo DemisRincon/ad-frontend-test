@@ -36,6 +36,7 @@ const GenreSelector: FC<GenreSelectorProps> = ({ genreList }) => {
               backgroundSize: "1.5rem",
             }}
             aria-label="Filter games by genre"
+            aria-busy={isLoading}
           >
             {genreList.map((genreItem) => (
               <option key={genreItem} value={genreItem}>

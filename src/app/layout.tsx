@@ -17,8 +17,50 @@ const area = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Apply Digital Test",
-  description: "Frontend development test for Apply Digital",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_VERCEL_URL || "https://example-videogame-store.com"
+  ),
+  title: "Example Videogame Store - Your One-Stop Shop for Games",
+  description:
+    "Example Videogame Store offers a wide selection of video games for all platforms, including the latest releases and classic favorites.",
+  keywords: [
+    "Example Videogame Store",
+    "Video Games",
+    "Game Store",
+    "Buy Video Games",
+    "Latest Releases",
+    "Classic Games",
+    "PC Games",
+    "Console Games",
+    "Gaming Accessories",
+    "PlayStation",
+    "Xbox",
+    "Nintendo",
+    "Steam",
+    "Epic Games",
+    "Game Reviews",
+    "Gaming News",
+    "Game Trailers",
+    "Game Deals",
+    "Online Game Store",
+    "Gaming Community",
+  ],
+  openGraph: {
+    title: "Example Videogame Store - Your One-Stop Shop for Games",
+    description:
+      "Example Videogame Store offers a wide selection of video games for all platforms, including the latest releases and classic favorites.",
+    url:
+      process.env.NEXT_PUBLIC_VERCEL_URL ||
+      "https://example-videogame-store.com",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Example Videogame Store - Your One-Stop Shop for Games",
+    description:
+      "Example Videogame Store offers a wide selection of video games for all platforms, including the latest releases and classic favorites.",
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${archivo.variable} ${area.variable}`}>
+      <body className={`${archivo.variable} ${area.variable}`} role="main">
         <GameContexProvider>
           <InnerLayout>{children}</InnerLayout>
         </GameContexProvider>

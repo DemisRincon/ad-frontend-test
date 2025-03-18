@@ -11,7 +11,9 @@ const Error: React.FC<ErrorPageProps> = ({ error }) => {
 
   return (
     <div className="font-archivo flex flex-col items-center justify-center py-16 px-4 text-center">
-      <h1 className="text-4xl font-bold mb-4">Something went wrong!</h1>
+      <h1 className="text-4xl font-bold mb-4" role="alert">
+        Something went wrong!
+      </h1>
       <p className="text-contentSecondary mb-4 max-w-md">
         We&apos;re sorry, but we encountered an unexpected error.
       </p>
@@ -22,7 +24,12 @@ const Error: React.FC<ErrorPageProps> = ({ error }) => {
         </p>
       )}
       <div className="mb-8">
-        <Image src="/error.svg" alt="Cart" width={200} height={200} />
+        <Image
+          src="/error.svg"
+          alt="Error illustration"
+          width={200}
+          height={200}
+        />
       </div>
       <div className="flex flex-col sm:flex-row gap-4">
         <Link

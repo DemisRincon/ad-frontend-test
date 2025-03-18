@@ -1,22 +1,8 @@
+import LoadingSpinner from "@/components/loading-spinner";
 import React from "react";
 
-interface LoadingSpinnerProps {
-  size?: "sm" | "md" | "lg";
-}
-
-const sizeClasses = {
-  sm: "w-4 h-4",
-  md: "w-8 h-8",
-  lg: "w-16 h-16",
+const Loading = () => {
+  return <LoadingSpinner size="lg" />;
 };
 
-const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = "md" }) => {
-  return (
-    <div
-      className={`spinner-border animate-spin inline-block border-4 rounded-full ${sizeClasses[size]}`}
-      role="status"
-    ></div>
-  );
-};
-
-export default LoadingSpinner;
+export default Loading;

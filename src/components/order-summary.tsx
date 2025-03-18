@@ -11,8 +11,13 @@ export function OrderSummary({ items }: OrderSummaryProps) {
 
   return (
     <div className="grid grid-cols-1 gap-10 mb-8 lg:w-[522px] lg:h-[454px]">
-      <div className="rounded-lg border bg-white px-4 py-6 font-archivo">
-        <h2 className="mb-3 text-2xl font-bold">Order Summary</h2>
+      <section
+        className="rounded-lg border bg-white px-4 py-6 font-archivo"
+        aria-labelledby="order-summary-heading"
+      >
+        <h2 id="order-summary-heading" className="mb-3 text-2xl font-bold">
+          Order Summary
+        </h2>
         <p className="mb-6 text-lg text-contentSecondary">
           {items.length} items
         </p>
@@ -37,8 +42,11 @@ export function OrderSummary({ items }: OrderSummaryProps) {
             <span>${total.toFixed(2)}</span>
           </div>
         </div>
-      </div>
-      <button className="w-full h-12 rounded-lg bg-contentPrimary py-3 text-sm font-bold tracking-[0.031em] text-white transition-colors hover:bg-secondary">
+      </section>
+      <button
+        className="w-full h-12 rounded-lg bg-contentPrimary py-3 text-sm font-bold tracking-[0.031em] text-white transition-colors hover:bg-secondary"
+        aria-label="Proceed to Checkout"
+      >
         Checkout
       </button>
     </div>

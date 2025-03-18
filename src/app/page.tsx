@@ -22,10 +22,19 @@ const Home = async ({
   const hasMore = currentPage < totalPages;
   return (
     <>
-      <section className="border-b border-fillPrimary">
+      <section
+        className="border-b border-fillPrimary"
+        aria-labelledby="genre-selector-heading"
+      >
+        <h2 id="genre-selector-heading" className="sr-only">
+          Select Genre
+        </h2>
         <GenreSelector genreList={["All", ...availableFilters]} />
       </section>
-      <section>
+      <section aria-labelledby="games-grid-heading">
+        <h2 id="games-grid-heading" className="sr-only">
+          Games List
+        </h2>
         <GamesGrid initialGameList={games} hasMore={hasMore} />
       </section>
     </>

@@ -15,7 +15,7 @@ const GamesGrid: React.FC<GamesGridProps> = ({ initialGameList, hasMore }) => {
     useGamesGrid(initialGameList, hasMore);
 
   if (isLoading) {
-    return <LoadingSpinner size="lg" />;
+    return <LoadingSpinner size="lg" aria-live="polite" />;
   }
 
   return (
