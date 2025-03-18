@@ -4,7 +4,7 @@ const fetchGames = async (genre: string | null = null, page: number = 1) => {
       "/api/games",
       process.env.NODE_ENV === "development"
         ? "http://localhost:3000"
-        : process.env.NEXT_PUBLIC_VERCEL_URL
+        : process.env.VERCEL_URL
     );
     if (genre) url.searchParams.append("genre", genre);
     url.searchParams.append("page", page.toString());
