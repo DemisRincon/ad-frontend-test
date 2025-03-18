@@ -11,7 +11,10 @@ const GenreSelector: FC<GenreSelectorProps> = ({
   genreList,
   selectedGenre,
 }) => {
-  const { genre, handleChange } = useGenreSelector(genreList, selectedGenre);
+  const { genre, handleChange, isLoading } = useGenreSelector(
+    genreList,
+    selectedGenre
+  );
 
   return (
     <div className="flex flex-col w-full py-8 px-6 2xl:py-12 2xl:px-32">
@@ -29,6 +32,7 @@ const GenreSelector: FC<GenreSelectorProps> = ({
           <span>|</span>
           <select
             id="genre-select"
+            disabled={isLoading}
             value={genre}
             onChange={handleChange}
             className="ml-6 appearance-none bg-transparent p-4 border-none focus:outline-none relative w-[205px]"

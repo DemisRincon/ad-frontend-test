@@ -25,6 +25,8 @@ const GameCard: FC<GameCardProps> = ({ game }) => {
               src={image}
               alt={`Cover image of ${name}`}
               fill
+              priority
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
               className="object-cover"
             />
           )}

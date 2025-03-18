@@ -2,15 +2,13 @@
 import { type ReactNode, createContext, type FC, useState } from "react";
 
 interface GameContextType {
-  genre: string;
-  handleChangeGenre: (value: string) => void;
   isLoading: boolean;
+  setIsLoading: (value: boolean) => void;
 }
 
 export const GameContext = createContext<GameContextType>({
-  genre: "All",
-  handleChangeGenre: () => {},
-  isLoading: false,
+  isLoading: true,
+  setIsLoading: () => {},
 });
 
 interface GameContexProviderProps {
@@ -20,14 +18,10 @@ interface GameContexProviderProps {
 export const GameContexProvider: FC<GameContexProviderProps> = ({
   children,
 }) => {
-  const [genre, setGenre] = useState("All");
-  const [isLoading, setIsLoading] = useState(false);
-  const handleChangeGenre = (value: string) => {
-    setGenre(value);
-  };
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <GameContext.Provider value={{ genre, handleChangeGenre, isLoading }}>
+    <GameContext.Provider value={{ isLoading, setIsLoading }}>
       {children}
     </GameContext.Provider>
   );

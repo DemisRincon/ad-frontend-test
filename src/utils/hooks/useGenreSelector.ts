@@ -1,11 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { GameContext } from "../context/provider";
 
 const useGenreSelector = (genreList: string[], selectedGenre: string) => {
-  const { genre, handleChangeGenre } = useContext(GameContext);
-
+  const { isLoading } = useContext(GameContext);
+  const [genre, setGenre] = useState("");
+  const handleChangeGenre = useCallback((value: string) => {
+    setGenre(value);
+  }, []);
   useEffect(() => {
-    if (genre === "All" && selectedGenre) {
+    if (genre === "" && selectedGenre) {
       const matchedGenre = genreList.find(
         (item) => item.toLowerCase() === selectedGenre.toLowerCase()
       );
@@ -29,7 +32,7 @@ const useGenreSelector = (genreList: string[], selectedGenre: string) => {
     window.history.pushState(null, "", newUrl.toString());
   };
 
-  return { genre, handleChange };
+  return { genre, handleChange, isLoading };
 };
 
 export default useGenreSelector;

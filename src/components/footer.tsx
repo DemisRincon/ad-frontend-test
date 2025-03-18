@@ -16,6 +16,7 @@ const Footer = () => {
               alt="Company Logo"
               width={170}
               height={44}
+              priority
               style={{ width: "auto", height: "auto" }}
             />
           </Link>
