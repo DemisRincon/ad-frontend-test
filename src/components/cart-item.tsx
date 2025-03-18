@@ -77,6 +77,7 @@ export function CartItem({
       <button
         onClick={() => onRemove(id)}
         className="absolute right-0 top-5"
+        role="button"
         aria-label={`Remove ${name} from cart`}
       >
         <Image src="/x.svg" alt="Close Icon" width={24} height={24} />

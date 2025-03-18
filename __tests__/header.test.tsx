@@ -14,7 +14,7 @@ describe("Header Component", () => {
   });
 
   it("should render the cart image with correct src attribute", () => {
-    const cartImage = screen.getByAltText("Shopping Cart");
+    const cartImage = screen.getByAltText("View your shopping cart");
     expect(cartImage).toHaveAttribute("src", "/cart.svg");
   });
 });

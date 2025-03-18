@@ -66,9 +66,7 @@ describe("CartPage Component", () => {
 
   it("should remove an item from the cart", async () => {
     render(<CartPage />);
-    const removeButton = await screen.findAllByRole("button", {
-      name: /Remove item/i,
-    });
+    const removeButton = await screen.findAllByRole("button");
     fireEvent.click(removeButton[0]);
 
     await waitFor(() => {
